@@ -5,8 +5,9 @@ import java.util.Collections;
 
 public class BackendGameBoard {
     ArrayList<Piece> pieces = new ArrayList<>();
+    int boardWidth = 4;
     public BackendGameBoard() {
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < boardWidth*2; i++) {
             pieces.add(new Piece(i, 0));
         }
         Collections.shuffle(pieces);
@@ -32,8 +33,8 @@ public class BackendGameBoard {
                 emptyPiecePosition = piece.getPosition();
             }
         }
-        //check legal move (+-4 / +-1 position) only works for 4x4 grid MIGHT NEED CHANGE !!! posi
-        if (positionFrom == emptyPiecePosition - 1 || positionFrom == emptyPiecePosition + 1 || positionFrom == emptyPiecePosition + 4 || positionFrom == emptyPiecePosition - 4){
+        //check legal move (+-boardWidth / +-1 position)
+        if (positionFrom == emptyPiecePosition - 1 || positionFrom == emptyPiecePosition + 1 || positionFrom == emptyPiecePosition + boardWidth || positionFrom == emptyPiecePosition - boardWidth){
             return true;
         }
         return false;
