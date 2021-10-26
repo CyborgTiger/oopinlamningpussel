@@ -39,4 +39,13 @@ public class BackendGameBoard {
         }
         return false;
     }
+
+    public boolean GameWon(){
+        for (int i = 0; i < pieces.size(); i++) {
+            if (pieces.get(i).getPosition() != i || pieces.get(i).getValue() != i){
+                return false;
+            }
+        }
+        return true;
+    }
 }
