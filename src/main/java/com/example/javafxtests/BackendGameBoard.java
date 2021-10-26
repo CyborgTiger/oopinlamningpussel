@@ -5,16 +5,20 @@ import java.util.Collections;
 
 public class BackendGameBoard {
     ArrayList<Piece> pieces = new ArrayList<>();
-    int boardWidth = 4;
+    int boardSize = 4; // width and height of board
     public BackendGameBoard() {
-        for (int i = 0; i < boardWidth*2; i++) {
+        for (int i = 0; i < boardSize *2; i++) {
             pieces.add(new Piece(i, 0));
         }
+        ShuffleBoard();
+        System.out.println(pieces);
+    }
+
+    public void ShuffleBoard(){
         Collections.shuffle(pieces);
         for (int i = 0; i < pieces.size(); i++) {
             pieces.get(i).setPosition(i);
         }
-        System.out.println(pieces);
     }
 
     public void MovePiece(int positionFrom, int positionTo){
@@ -34,7 +38,7 @@ public class BackendGameBoard {
             }
         }
         //check legal move (+-boardWidth / +-1 position)
-        if (positionFrom == emptyPiecePosition - 1 || positionFrom == emptyPiecePosition + 1 || positionFrom == emptyPiecePosition + boardWidth || positionFrom == emptyPiecePosition - boardWidth){
+        if (positionFrom == emptyPiecePosition - 1 || positionFrom == emptyPiecePosition + 1 || positionFrom == emptyPiecePosition + boardSize || positionFrom == emptyPiecePosition - boardSize){
             return true;
         }
         return false;
