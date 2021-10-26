@@ -1,0 +1,26 @@
+.root{
+
+}
+
+.button{
+    -fx-border-color: BLACK;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-color: #DF7A27;
+    -fx-font: #7d1d9a;
+}
+.button:hover{
+    -fx-border-color:#DF7A27 ;
+    -fx-background-color: BLACK;
+}
+
+#newGame{
+    -fx-background-color: BLACK;
+    -fx-border-color: #DF7A27;
+    -fx-font: #DF7A27;
+}
+#newGame:hover{
+    -fx-background-color: #DF7A27;
+    -fx-font: BLACK;
+    -fx-border-color: BLACK;
+}
