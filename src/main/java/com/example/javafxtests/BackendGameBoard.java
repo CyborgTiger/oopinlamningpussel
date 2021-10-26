@@ -23,4 +23,19 @@ public class BackendGameBoard {
             }
         }
     }
+
+    public boolean LegalMove(int positionFrom){
+        //find empty space
+        int emptyPiecePosition = -1;
+        for (Piece piece : pieces) {
+            if (piece.getValue() == 0) {
+                emptyPiecePosition = piece.getPosition();
+            }
+        }
+        //check legal move (+-4 / +-1 position) only works for 4x4 grid MIGHT NEED CHANGE !!! posi
+        if (positionFrom == emptyPiecePosition - 1 || positionFrom == emptyPiecePosition + 1 || positionFrom == emptyPiecePosition + 4 || positionFrom == emptyPiecePosition - 4){
+            return true;
+        }
+        return false;
+    }
 }
