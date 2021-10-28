@@ -25,7 +25,7 @@
          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
       </rowConstraints>
       <children>
-         <Button id="newGame" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewGame" prefHeight="29.0" prefWidth="272.0" text="New Game" textAlignment="CENTER" textFill="#df7a27" GridPane.columnIndex="1">
+         <Button fx:id="newGame" id="newGame" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewGame" prefHeight="29.0" prefWidth="272.0" text="New Game" textAlignment="CENTER" textFill="#df7a27" GridPane.columnIndex="1">
             <GridPane.margin>
                <Insets left="50.0" />
             </GridPane.margin>

@@ -3,42 +3,43 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Gui extends JFrame implements ActionListener {
-    JPanel frame = new JPanel();
+    class GUI extends JFrame implements ActionListener {
+
     JPanel controls = new JPanel();
     JPanel gameBoard = new JPanel();
     JButton newGame = new JButton();
 
-    Gui(){
+        GUI(){
 
-        setSize(700, 500);
-        add(frame);
-        frame.add(gameBoard);
-        gameBoard.setSize(400,400);
-        int buttons = 4;
+        setLayout(new GridLayout(2,1));
         add(gameBoard);
+        add(controls);
+        //controls.setSize(500,50);
+        int buttons = 4;
         gameBoard.setLayout(new GridLayout(buttons, buttons));
 
-
-
-        for(int i =1 ; i <= buttons*4; i++){
+        for(int i =1 ; i <= buttons*buttons; i++){
             Button button = new Button();
             gameBoard.add(button);
             button.addActionListener( this);
         }
-        frame.add(controls);
-        controls.setSize(700, 100);
         controls.setLayout(new FlowLayout());
         controls.add(newGame);
+        newGame.addActionListener(this);
         setLocationRelativeTo(null);
+        setSize(500,500);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        System.out.println(event.getSource());
+        System.out.println(event);
+
+        if(event.getSource() == newGame)
+            System.out.println("NewGame");
     }
+
+
 }
