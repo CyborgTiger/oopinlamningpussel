@@ -9,17 +9,19 @@ import java.awt.event.ActionListener;
     JPanel gameBoard = new JPanel();
     JButton newGame = new JButton();
 
-        GUI(){
+    GUI(){
 
         setLayout(new GridLayout(2,1));
         add(gameBoard);
         add(controls);
         //controls.setSize(500,50);
         int buttons = 4;
+        Button []  arrayButton = new Button[buttons*buttons];
         gameBoard.setLayout(new GridLayout(buttons, buttons));
 
         for(int i =1 ; i <= buttons*buttons; i++){
             Button button = new Button();
+            arrayButton[i] = button;
             gameBoard.add(button);
             button.addActionListener( this);
         }
