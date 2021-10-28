@@ -44,6 +44,13 @@ public class BackendGameBoard {
         return false;
     }
 
+    public void SolveGame() {
+        for (Piece piece : pieces) {
+            piece.setPosition(piece.getValue());
+            //update game board
+        }
+    }
+
     public boolean GameWon(){
         for (int i = 0; i < pieces.size(); i++) {
             if (pieces.get(i).getPosition() != i || pieces.get(i).getValue() != i){
