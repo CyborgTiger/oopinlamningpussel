@@ -1,43 +1,58 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-    class GUI extends JFrame implements ActionListener {
-
+    class GUI extends JFrame implements ActionListener  {
     JPanel controls = new JPanel();
     JPanel gameBoard = new JPanel();
-    JButton newGame = new JButton();
+    JButton newGame = new JButton("New Game");
+    BufferedImage myPicture = ImageIO.read(new File("src/images.png"));
+    JLabel pic = new JLabel(new ImageIcon(myPicture));
 
-    GUI(){
+
+    GUI() throws IOException {
 
         setLayout(new GridLayout(2,1));
         add(gameBoard);
         add(controls);
-        //controls.setSize(500,50);
         int buttons = 4;
-        Button []  arrayButton = new Button[buttons*buttons];
+        JButton []  arrayButton = new JButton[buttons*buttons];
         gameBoard.setLayout(new GridLayout(buttons, buttons));
 
-        for(int i =1 ; i <= buttons*buttons; i++){
-            Button button = new Button();
+        for(int i =0 ; i < buttons*buttons; i++){
+            JButton button = new JButton(Integer.toString(i));
             arrayButton[i] = button;
             gameBoard.add(button);
+            button.setForeground(Color.BLACK);
+            button.setBackground(Color.MAGENTA);
+            button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            button.setBorderPainted(true);
             button.addActionListener( this);
         }
-        controls.setLayout(new FlowLayout());
         controls.add(newGame);
+        controls.setBackground(Color.WHITE);
+        controls.add(pic);
         newGame.addActionListener(this);
-        setLocationRelativeTo(null);
-        setSize(500,500);
+        newGame.setBackground(Color.orange);
+        newGame.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        setLocation(400,100);
+        setSize(400,500);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
+
+
+
     @Override
     public void actionPerformed(ActionEvent event) {
-        System.out.println(event);
+        System.out.println(event.paramString());
 
         if(event.getSource() == newGame)
             System.out.println("NewGame");
